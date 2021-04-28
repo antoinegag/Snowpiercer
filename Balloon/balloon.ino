@@ -5,9 +5,6 @@
 #include "psswd.h"
 #include "user_interface.h"
 
-#include <LiquidCrystal_I2C.h>
-LiquidCrystal_I2C lcd(0x3F,20,4);
-
 #include <BME280I2C.h>
 #include <Wire.h>
 
@@ -139,13 +136,6 @@ void setup(void) {\
   Serial.print("Connected.");
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
-
-  lcd.init();
-  lcd.backlight();
-  lcd.setCursor(0,0);
-  lcd.print("IP: ");
-  lcd.setCursor(0,1);
-  lcd.print(WiFi.localIP().toString());
   
   if (MDNS.begin("esp8266")) {
     Serial.println("MDNS responder started");
